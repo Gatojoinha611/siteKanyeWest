@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kanye West - Sobre</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="internal-header">
+        <div class="logo">Ye</div>
+        <nav class="nav-menu">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="top5.html" class="nav-link">Top 5</a>
+            <a href="discografia.html" class="nav-link">Discografia</a>
+            <a href="sobre.html" class="nav-link active">Sobre</a>
+        </nav>
+        <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </header>
+
+    <div class="sobre-section">
+        <h1>Sobre Kanye West</h1>
+        <p class="subtitle">O gênio por trás da música, da moda e da controvérsia.</p>
+
+        <div class="sobre-content">
+            <div class="sobre-text">
+                <p>Kanye Omari West, nascido em 8 de junho de 1977 em Atlanta, Geórgia, é um dos artistas mais influentes e polarizantes da história moderna. Criado em Chicago, ele começou como produtor, moldando o som do hip-hop com samples soul únicos antes de explodir como rapper com <em>The College Dropout</em> em 2004. Desde então, Kanye redefiniu o gênero com álbuns como <em>My Beautiful Dark Twisted Fantasy</em>, <em>Yeezus</em> e <em>Jesus Is King</em>, misturando inovação musical, letras pessoais e experimentação ousada.</p>
+                <p>Fora da música, Ye é um ícone da moda com a marca Yeezy, um pai dedicado e uma figura que nunca foge de falar o que pensa — seja revolucionando a arte ou gerando manchetes. Amado por muitos, criticado por outros, Kanye é, acima de tudo, um visionário que não tem medo de desafiar o status quo.</p>
+            </div>
+
+            <div class="sobre-gallery">
+                <div class="gallery-item">
+                    <img src="img/kanye-early.jpg" alt="Kanye no início da carreira" class="gallery-image">
+                    <p class="caption">Início da carreira como produtor em Chicago</p>
+                </div>
+                <div class="gallery-item">
+                    <img src="img/kanye-mbdtf.jpg" alt="Kanye no auge" class="gallery-image">
+                    <p class="caption">A era de <em>My Beautiful Dark Twisted Fantasy</em> (2010)</p>
+                </div>
+                <div class="gallery-item">
+                    <img src="img/kanye-recent.jpg" alt="Kanye recente" class="gallery-image">
+                    <p class="caption">Kanye em 2020s, com Yeezy e novos projetos</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Botão de play/pause do áudio ambiente -->
+    <button class="audio-control" id="audio-control">▶</button>
+
+    <!-- Áudio ambiente -->
+    <audio id="background-audio" loop muted>
+        <source src="msc/everything-we-need-loop.mp3" type="audio/mpeg">
+        Seu navegador não suporta áudio.
+    </audio>
+
+    <script>
+        // Script pra toggle do menu hamburguer
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+
+        hamburger.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            hamburger.classList.toggle('active');
+        });
+
+        // Script pra controlar o áudio ambiente
+        const backgroundAudio = document.getElementById('background-audio');
+        const audioControl = document.getElementById('audio-control');
+
+        audioControl.addEventListener('click', () => {
+            if (backgroundAudio.paused || backgroundAudio.muted) {
+                backgroundAudio.muted = false;
+                backgroundAudio.play().then(() => {
+                    audioControl.textContent = '❚❚';
+                }).catch(error => {
+                    console.log("Erro ao tentar tocar o áudio ambiente: ", error);
+                });
+            } else {
+                backgroundAudio.pause();
+                audioControl.textContent = '▶';
+            }
+        });
+    </script>
+</body>
+</html>

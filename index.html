@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kanye West - Home</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="index-header">
+        <div class="logo">Ye</div>
+    </header>
+
+    <div class="hero-section">
+        <div class="overlay"></div>
+        <div class="content">
+            <h1>Welcome to the World of Kanye</h1>
+            <button class="enter-btn" onclick="window.location.href='top5.html'">Entrar</button>
+            <p class="subtitle">Explore a genialidade de Ye</p>
+        </div>
+    </div>
+
+    <!-- Botão de play/pause do áudio ambiente -->
+    <button class="audio-control" id="audio-control">▶</button>
+
+    <!-- Áudio ambiente -->
+    <audio id="background-audio" loop muted>
+        <source src="msc/dark-fantasy-intro-loop.mp3" type="audio/mpeg">
+        Seu navegador não suporta áudio.
+    </audio>
+
+    <script>
+        const backgroundAudio = document.getElementById('background-audio');
+        const audioControl = document.getElementById('audio-control');
+
+        audioControl.addEventListener('click', () => {
+            if (backgroundAudio.paused || backgroundAudio.muted) {
+                backgroundAudio.muted = false;
+                backgroundAudio.play().then(() => {
+                    audioControl.textContent = '❚❚';
+                }).catch(error => {
+                    console.log("Erro ao tentar tocar o áudio ambiente: ", error);
+                });
+            } else {
+                backgroundAudio.pause();
+                audioControl.textContent = '▶';
+            }
+        });
+    </script>
+</body>
+</html>
